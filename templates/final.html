@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silverse Email Analysis</title>
+    <link rel="stylesheet" href="../final.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../static/final.js"></script>
+    <script>
+        function showIntroduction() {
+            document.getElementById('introductionPage').style.display = 'block';
+            document.getElementById('scanPage').style.display = 'none';
+            document.getElementById('resultsPage').style.display = 'none';
+        }
+
+        function showScanPage() {
+            document.getElementById('introductionPage').style.display = 'none';
+            document.getElementById('scanPage').style.display = 'block';
+            document.getElementById('resultsPage').style.display = 'none';
+        }
+
+        function analyzeEmailContent() {
+            // Implement email analysis logic here using Axios to communicate with Flask backend
+            // Display results in the 'resultsContainer' div
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = "Analysis in progress..."; // Placeholder text
+        }
+
+        function showResultsPage() {
+            document.getElementById('introductionPage').style.display = 'none';
+            document.getElementById('scanPage').style.display = 'none';
+            document.getElementById('resultsPage').style.display = 'block';
+
+            // Call function to analyze email content
+            analyzeEmailContent();
+        }
+    </script>
+</head>
+<body>
+    <!-- Introduction Page -->
+    <div id="introductionPage">
+        <h1>Welcome to Silverse Email Analysis</h1>
+        <p>This tool helps you detect phishing and malicious emails.</p>
+        <button onclick="showScanPage()">Start Scanning</button>
+    </div>
+
+    <!-- Scan Page -->
+    <div id="scanPage" style="display: none;">
+        <h2>Scan Email for Phishing</h2>
+        <p>If you suspect this email is phishing/malicious, click the button below to analyze it.</p>
+        <button onclick="showResultsPage()">Analyze Email</button>
+    </div>
+
+    <!-- Results Page -->
+    <div id="resultsPage" style="display: none;">
+        <h2>Analysis Results</h2>
+        <div id="resultsContainer">Results will appear here...</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="MailApp">
+
+  <!-- Add-in Metadata -->
+  <Id>YOUR_ADDIN_ID_HERE</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Silverse Private Limited</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="<font color='#007bff'>Silverse Email Analysis" />
+  <Description DefaultValue="<font color='#007bff'>Detect phishing and malicious emails with Silverse Email Analysis." />
+
+  <!-- Add-in Icon (32x32 pixels recommended) -->
+  <IconUrl DefaultValue="https://www.silverse.com/wp-content/themes/silver/assets/images/logow.png" />
+
+  <!-- Add-in Capabilities -->
+  <Capabilities>
+    <Capability Name="Mailbox" />
+  </Capabilities>
+
+  <!-- Define the add-in's user interface -->
+  <Hosts>
+    <Host xsi:type="MailHost">
+      <DesktopFormFactor>
+        <!-- Link to JavaScript Function File -->
+        <FunctionFile resid="functionFileUrl" />
+
+        <!-- Extension Point for Message Read -->
+        <ExtensionPoint xsi:type="MessageReadCommandSurface">
+          <OfficeTab id="tabDefault">
+            <Group id="groupReadMessage">
+              <Label resid="groupLabel" />
+              <!-- Define Analyze Email Button -->
+              <Control xsi:type="Button" id="btnAnalyzeEmail">
+                <Label resid="btnLabelAnalyze" />
+                <Supertip>
+                  <Title resid="btnTooltipTitle" />
+                  <Description resid="btnTooltipDescription" />
+                </Supertip>
+                <IconUrl DefaultValue="https://www.silverse.com/wp-content/themes/silver/assets/images/logow.png" />
+                <!-- Define Action to Execute JavaScript Function -->
+                <Action xsi:type="ExecuteFunction">
+                  <FunctionName>analyzeEmail</FunctionName>
+                </Action>
+              </Control>
+            </Group>
+          </OfficeTab>
+        </ExtensionPoint>
+      </DesktopFormFactor>
+    </Host>
+  </Hosts>
+
+  <!-- Resources for add-in -->
+  <Resources>
+    <!-- Define Image and URLs -->
+    <bt:Images>
+      <bt:Image id="functionFileUrl" DefaultValue="https://example.com/final.js" />
+    </bt:Images>
+    <bt:Urls>
+      <bt:Url id="groupLabel" DefaultValue="<font color='#007bff'>Silverse Email Analysis" />
+      <bt:Url id="btnLabelAnalyze" DefaultValue="<font color='#007bff'>Analyze Email" />
+      <bt:Url id="btnTooltipTitle" DefaultValue="<font color='#007bff'>Analyze Email" />
+      <bt:Url id="btnTooltipDescription" DefaultValue="<font color='#007bff'>Detect phishing and malicious emails." />
+    </bt:Urls>
+  </Resources>
+
+</OfficeApp>
